@@ -1,6 +1,6 @@
 //Ria Dhulekar 
 //Practice Java project for OOP
-//from https://www.youtube.com/watch?v=U3Ibvu0htNs&t=133s
+//inspired by https://www.youtube.com/watch?v=U3Ibvu0htNs&t=133s
 
 package emailapp;
 
@@ -15,7 +15,8 @@ public class Email {
     private int defaultPasswordLength = 10;
     private String email;
     private String alternateEmail;
-    private String companySuffix = "aeycompany.com";
+    private String companyName = "Duck&Goose";
+    private String companySuffix = "duck&goosecompany.com";
 
     //Constructor to receive the first name and last name
     public Email(String firstName, String lastName){
@@ -25,24 +26,28 @@ public class Email {
         //Call a method asking for the department and return the department 
         this.department = setDepartment();
         System.out.println("Department: " + this.department);
+        
 
+        System.out.println("\n" + firstName.toUpperCase() + " " + lastName.toUpperCase() + "'s Information");
         //Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
-        System.out.println("Your password is: " + this.password);
+        //System.out.println("Your password is: " + this.password);
 
         //Combine elements to generate email
-        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department +"." + companySuffix;
+        email = firstName.toLowerCase() + lastName.toLowerCase() + "@" + department +"." + companySuffix;
         
     }
     //Ask for the department
     private String setDepartment() {
-        System.out.print("Enter the department\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none\nEnter department code: ");
+        System.out.print("\nDepartment Codes:\n1 for Sales\n2 for Development\n3 for Accounting\n4 for Marketing\n5 for HR\n0 for none\nEnter your department code: ");
         Scanner in = new Scanner (System.in);
         int depChoice = in.nextInt();
         in.close();
         if (depChoice ==1){ return "sales";}
         else if (depChoice == 2){ return "dev";}
         else if (depChoice == 3){ return "acct";}
+        else if (depChoice == 4){return "mrktg";}
+        else if (depChoice == 5){ return "hr";}
         else { return "";}
     }
 
@@ -78,8 +83,11 @@ public class Email {
     public String getPassword() { return password;}
 
     public String showInfo() {
-        return "DISPLAY NAME: "+ firstName + " " + lastName + 
-                "\nCOMPANY EMAIL: " + email + 
-                "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb";
+        return "Name: "+ firstName + " " + lastName + 
+                "\nCompany email: " + email + 
+                "\nPassword: " + this.password +
+                "\nMailbox capacity: " + mailboxCapacity + "mb"+ 
+                "\n\nWELCOME TO " + companyName + ", " + firstName + " " + lastName;
+                
     }
 }
