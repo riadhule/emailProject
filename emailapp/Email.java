@@ -11,10 +11,8 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapacity = 500;
     private int defaultPasswordLength = 10;
     private String email;
-    private String alternateEmail;
     private String companyName = "Duck&Goose";
     private String companySuffix = "duck&goosecompany.com";
 
@@ -26,12 +24,12 @@ public class Email {
         //Call a method asking for the department and return the department 
         this.department = setDepartment();
         System.out.println("Department: " + this.department);
-        
-
+    
         System.out.println("\n" + firstName.toUpperCase() + " " + lastName.toUpperCase() + "'s Information");
+
         //Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
-        //System.out.println("Your password is: " + this.password);
+        
 
         //Combine elements to generate email
         email = firstName.toLowerCase() + lastName.toLowerCase() + "@" + department +"." + companySuffix;
@@ -63,30 +61,13 @@ public class Email {
         }
     
 
-    //Set the mailbox capacity 
-    public void seteMailboxCapacity (int capacity){
-        this.mailboxCapacity = capacity;
-    }
-
-    //Set the alternate email
-    public void setAlternateEmail(String altEmail){
-        this.alternateEmail = altEmail;
-    }
-
-    //Change the password 
-    public void changePassword(String password){
-        this.password = password;
-    }
-
-    public int getMailboxCapacity() { return mailboxCapacity;}
-    public String getAlternateEmail() {return alternateEmail;}
+    
     public String getPassword() { return password;}
 
     public String showInfo() {
         return "Name: "+ firstName + " " + lastName + 
                 "\nCompany email: " + email + 
                 "\nPassword: " + this.password +
-                "\nMailbox capacity: " + mailboxCapacity + "mb"+ 
                 "\n\nWELCOME TO " + companyName + ", " + firstName + " " + lastName;
                 
     }
